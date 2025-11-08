@@ -36,9 +36,9 @@ async function main() {
     if (await isSent(anime.id)) continue;
 
     const capitalizeWord = anime.type.charAt(0).toUpperCase() + anime.type.slice(1);
-    const maxLenght = 180;
     const description = anime.sinopsis ? anime.sinopsis : anime.deskripsi
     function shortDescr(teks, maxLenght) {
+      if (!teks) return "-";
       if (teks.lenght <= maxLenght) return teks;
       const potong = teks.substring(0, maxLenght);
       const lastSpace = potong.lastIndexOf(" ");

@@ -2,7 +2,7 @@ const axios = require("axios");
 const fs = require("fs");
 const admin = require("firebase-admin");
 
-const API_URL = "https://api-eight-xi-96.vercel.app/streamjav/api/all";
+const API_URL = "https://api-eight-xi-96.vercel.app/streamcuy/api/all";
 const WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
@@ -32,7 +32,7 @@ async function main() {
   const sorted = data.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
   for (const anime of sorted) {
-    const link = `https://streamjav.vercel.app/watch/${anime.type}/${anime.id}`;
+    const link = `https://streamcuy.vercel.app/watch/${anime.type}/${anime.id}`;
     if (await isSent(anime.id)) continue;
 
     const capitalizeWord = anime.type.charAt(0).toUpperCase() + anime.type.slice(1);

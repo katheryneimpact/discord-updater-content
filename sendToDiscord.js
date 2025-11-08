@@ -36,14 +36,23 @@ async function main() {
     if (await isSent(anime.id)) continue;
 
     const capitalizeWord = anime.type.charAt(0).toUpperCase() + anime.type.slice(1);
+    const maxLenght = 180;
+    const description = anime.sinopsis ? anime.sinopsis : anime.deskripsi
+    function shortDescr(teks, maxLenght) {
+      if (teks.lenght <= maxLenght) return teks;
+      const potong = teks.substring(0, maxLenght);
+      const lastSpace = potong.lastIndexOf(" ");
+      return potong.substring(0, lastSpace) + "...";
+    }
+    const shortDesc = shortDescr(description, 180)
 
     const payload = {
-      content: `## 📢 ${capitalizeWord} Bokep Baru Rilis! <a:femboyturkey_owolickright:1387559668997685248>
--# gk ding udh lama.
+      content: `## 📢 ${capitalizeWord} Baru Rilis! <a:EG_SpongebobDancing:1387550896778383380>
+-# ${shortDesc}
 || <@&1387116137497624669> ||
 
 🎬 **${anime.title}**
-${link}`,
+[**Tonton Sekarang**](${link})`,
     };
 
     console.log("Mengirim:", anime.title);
